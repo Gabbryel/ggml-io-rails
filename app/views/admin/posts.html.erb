@@ -1,0 +1,12 @@
+<div data-controller="modal">
+  <%= render 'posts/modal', route: 'new_post', src: new_post_path %>
+  <%= button_tag 'New post', data: {action: 'click->modal#open'}, class: 'cursor-pointer p-5' %>
+  <br>
+  <section>
+    <%= turbo_frame_tag :posts, target: "_top", class: "grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8" do %>
+      <%= render @posts %>
+    <% end %>
+    <%#= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream) %>
+  </section>
+ 
+</div>

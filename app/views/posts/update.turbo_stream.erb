@@ -1,0 +1,2 @@
+<%= turbo_stream.replace "posts", @post %>
+<%= turbo_stream.replace "edit_post_#{@post.id}", partial: "posts/form", locals: {post: @post} %>

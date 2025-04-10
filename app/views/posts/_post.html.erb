@@ -1,0 +1,38 @@
+<% if controller_name == 'admin' %>
+  <div id="<%= dom_id post %>" class="grid grid-cols-1 mb-5 border-2 border-gray-200 rounded-lg shadow-md p-4" data-controller="modal-edit">
+    <h3>id: <%= post.id %></h3>
+    <h1><%= post.title %> </h1>
+    <div class="mb-4">
+      <%= cl_image_tag(post.photo.key) if post.photo.key %>
+      <%= cl_video_tag(post.video.key, loop: false, controls: false, autoplay: false, autoplayMode: 'on-scroll', preload: false, muted: true) if post.video.key %>
+    </div>
+    <%= button_tag 'Edit post', data: {action: 'click->modal-edit#open'}, class: 'cursor-pointer p-5' %>
+    <%= render "posts/modal_edit", post: post %>
+  </div>
+<% end %>
+
+<% if controller_name == 'pages' && action_name == 'feed' %>
+<div class="col-span-1">
+  <%= cl_image_tag(post.photo.key) if post.photo.key %>
+  <div class="w-1/2 mx-auto">
+    <%= cl_video_tag(post.video.key, loop: true, controls: true, autoplay: true, autoplayMode: "on-scroll", muted: true, preload: false) if post.video.key %>
+  </div>
+  <div class="post-footer relative flex place-content-between text-white w-full mt-[-2rem] px-2">
+    <div><%= post.title %></div>
+    <div><%= post_counter + 1 %>/<%= @posts.count %></div>
+  </div>
+</div>
+<% end %>
+
+<% if controller_name == 'posts' && action_name == 'index' %>
+<div class="col-span-1">
+  <%= cl_image_tag(post.photo.key) if post.photo.key %>
+  <div class="w-full">
+    <%= cl_video_tag(post.video.key, loop: true, controls: true, autoplay: true, autoplayMode: "on-scroll", muted: true, preload: false) if post.video.key %>
+  </div>
+  <div class="post-footer relative flex place-content-between text-white w-full mt-[-2rem] px-2">
+    <div><%= post.title %></div>
+    <div><%= post_counter + 1 %>/<%= @posts.count %></div>
+  </div>
+</div>
+<% end %>

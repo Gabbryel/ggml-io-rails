@@ -1,0 +1,11 @@
+  <section>
+    <%= turbo_frame_tag :posts, target: "_top", loading: :lazy, class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" do %>
+      <%= render @posts %>
+    <% end %>
+    <%#= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream) %>
+  </section>
+
+
+
+
+

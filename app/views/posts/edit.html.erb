@@ -1,0 +1,25 @@
+<%= turbo_frame_tag "#{@post.id}_edit", class: 'hey' do %>
+  <%= simple_form_for @post do |f| %>
+  <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+    <div class="col-span-full">
+      <%= f.input :title, label: 'Title', label_html: { class: 'block text-sm/6 font-medium text-gray-900' }, input_html: { class: 'block w-full mt-2 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6' } %>
+    </div>
+
+    <div class="col-span-full">
+      <%= f.input :photo, as: :file, label_html: { class: "block text-sm/6 font-medium text-gray-900" }, input_html: { class: "rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50" } %>
+    </div>
+
+    <div class="col-span-full">
+      <%= f.input :video, as: :file, label_html: { class: "block text-sm/6 font-medium text-gray-900" }, input_html: { class: "rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50" } %>
+    </div>
+    
+    <div class="mt-6 flex flex-wrap items-center gap-x-6">
+      <div class="mb-3">
+        <%= link_to "Cancel", admin_posts_path, class: "text-sm/6 font-semibold text-white rounded-md hover:bg-red-800 bg-red-900 px-3 py-2" %>
+      </div>
+      <%= f.button :submit, class: "rounded-md bg-green-900 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-900" %>
+    </div>
+
+    <% end %>
+  </div>
+<% end %>
